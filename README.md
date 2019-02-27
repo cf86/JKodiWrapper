@@ -23,16 +23,16 @@ gradle install
 In order to use JKodi Wrapper, Kodi remote control must be enabled. To do so perform the following steps:
 
 1.) Go to Settings
-![Settings](https://raw.github.com/cf86/MP3ToolKit/master/Screenshots/ID3AddRemove.png)
+![Settings](https://github.com/cf86/JKodiWrapper/blob/master/screenshots/Settings.png)
 
 2.) Open the Services Menu
-![Service](https://raw.github.com/cf86/MP3ToolKit/master/Screenshots/ID3AddRemove.png)
+![Service](https://github.com/cf86/JKodiWrapper/blob/master/screenshots/Service.png)
 
 3.) Select the Control Tab
-![Control](https://raw.github.com/cf86/MP3ToolKit/master/Screenshots/ID3AddRemove.png)
+![Control](https://github.com/cf86/JKodiWrapper/blob/master/screenshots/Control.png)
 
 4.) Enable Remote control
-![Remote Access](https://raw.github.com/cf86/MP3ToolKit/master/Screenshots/ID3AddRemove.png)
+![Remote Access](https://github.com/cf86/JKodiWrapper/blob/master/screenshots/RemoteAccess.png)
 
 
 ## How to use
