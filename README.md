@@ -68,7 +68,7 @@ PlayerSpeed state = kodi.getPlayer().playPause(new KodiID(1), new PlayerID(1)).g
 val speed = kodi.player.playPause(KodiID(1), PlayerID(1)).result
 ```
 
-All other modules work in a similar manner.
+All other modules work in a similar manner. For more examples see the Test Folder.
 
 ## Copyright
 
