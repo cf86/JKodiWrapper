@@ -68,7 +68,7 @@ val players = kodi.player.getActivePlayers(KodiID(1)).result
 // Java
 PlayerSpeed state = kodi.getPlayer().playPause(new KodiID(1), new PlayerID(1)).getResult();
 // Kotlin
-val speed = kodi.player.playPause(KodiID(1), PlayerID(1)).result
+val state = kodi.player.playPause(KodiID(1), PlayerID(1)).result
 ```
 
 All other modules work in a similar manner. For more examples see the Test Folder.
