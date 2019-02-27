@@ -39,7 +39,7 @@ In order to use JKodi Wrapper, Kodi remote control must be enabled. To do so per
 
 ### Instantiate
 
-During instantiation the Constructor just needs to IP, Port and a boolean to specifiy the use of TLS.
+During instantiation the Constructor just needs the IP (e.g. 127.0.0.1 for localhost), Port (default is 8080) and a boolean to specifiy the use of TLS (default is false).
 
 ```java
 // Java
@@ -50,9 +50,9 @@ val kodi = Kodi("127.0.0.1", 8080, false)
 
 ### Make a call
 After an instance is instantiated, a component can directly be accessed and offers all methods defined in the specfic module of the [Kodi JSON API](https://kodi.wiki/view/JSON-RPC_API/v8).
-For example to get all active players, the player module needs to be used.
 The KodiID is just an ID which will just be returned, so you can use whatever ID you want:
  
+#### get all active players 
 ```java
 // Java
 List<Player> players = kodi.getPlayer().getActivePlayers(new KodiID(1)).getResult();
@@ -60,7 +60,7 @@ List<Player> players = kodi.getPlayer().getActivePlayers(new KodiID(1)).getResul
 val players = kodi.player.getActivePlayers(KodiID(1)).result
 ```
 
-to start/pause a given player, you could e.g. use:
+#### play/pause player 
 ```java
 // Java
 PlayerSpeed state = kodi.getPlayer().playPause(new KodiID(1), new PlayerID(1)).getResult();
