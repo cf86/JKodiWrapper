@@ -51,6 +51,9 @@ val kodi = Kodi("127.0.0.1", 8080, false)
 ### Make a call
 After an instance is instantiated, a component can directly be accessed and offers all methods defined in the specfic module of the [Kodi JSON API](https://kodi.wiki/view/JSON-RPC_API/v8).
 The KodiID is just an ID which will just be returned, so you can use whatever ID you want:
+
+note: in all Examples the playerID should be received using getActivePlayers first. For simplicity it is set to 1 in all examples.
+
  
 #### get all active players 
 ```java
