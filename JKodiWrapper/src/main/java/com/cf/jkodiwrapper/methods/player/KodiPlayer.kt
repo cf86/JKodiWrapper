@@ -94,7 +94,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     fun playPause(id: KodiID, playerID: PlayerID, state: Boolean? = null): PlayPauseSpeedRespond {
         logger.info("Play/Pause $state Player: $playerID. ID: $id")
 //        val post = KodiPostData(id, PlayerMethod.PLAY_PAUSE, PlayPauseParam(playerID, state))
-        val post = KodiPostData(id, PlayerMethod.PLAY_PAUSE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.PLAY_PAUSE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (state == null) KodiStringProperty("play", GlobalToggle.TOGGLE.toString()) else KodiBoolProperty("play", state))))
         return makeCall(post)
     }
@@ -156,7 +156,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     fun getPlayerItem(id: KodiID, playerID: PlayerID, properties: List<ListFieldsAll> = listOf()): PlayerItemRespond {
         logger.info("Get Item for Player $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.GET_ITEM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id), KodiListProperty("properties", properties))))
+        val post = KodiPostData(id, PlayerMethod.GET_ITEM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id), KodiListProperty("properties", properties))))
         return makeCall(post)
     }
 
@@ -173,7 +173,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     fun getPlayerProperties(id: KodiID, playerID: PlayerID, properties: List<PlayerPropertyName> = listOf()): PlayerPropertiesRespond {
         logger.info("Get Properties for Player $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.GET_PROPERTIES, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id), KodiListProperty("properties", properties))))
+        val post = KodiPostData(id, PlayerMethod.GET_PROPERTIES, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id), KodiListProperty("properties", properties))))
         return makeCall(post)
     }
 
@@ -218,7 +218,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     private fun goTo(id: KodiID, playerID: PlayerID, nextItem: AbstractGoTo): KodiStringRespond {
         logger.info("Go To: $nextItem for Player $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.GO_TO, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.GO_TO, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (nextItem is NxtPrevGoTo) KodiStringProperty("to", nextItem.getValue()) else KodiIntProperty("to", nextItem.getValue().toInt()))))
         return makeCall(post)
     }
@@ -354,7 +354,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     private fun setAudioStream(id: KodiID, playerID: PlayerID, selection: AbstractStreamSelection): KodiStringRespond {
         logger.info("Select Audio stream $selection for $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.SET_AUDIO_STREAM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.SET_AUDIO_STREAM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (selection is StreamIndexSelection) KodiIntProperty("stream", selection.getValue().toInt()) else KodiStringProperty("stream", selection.getValue()))))
         return makeCall(post)
     }
@@ -372,7 +372,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     fun setPartyMode(id: KodiID, playerID: PlayerID, state: Boolean? = null): KodiStringRespond {
         logger.info("Set Party Mode for $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.SET_PARTY_MODE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.SET_PARTY_MODE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (state == null) KodiStringProperty("partymode", GlobalToggle.TOGGLE.toString()) else KodiBoolProperty("partymode", state))))
         return makeCall(post)
     }
@@ -408,7 +408,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     fun setShuffle(id: KodiID, playerID: PlayerID, state: Boolean? = null): KodiStringRespond {
         logger.info("Set Shuffle $state for $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.SET_SHUFFLE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.SET_SHUFFLE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (state == null) KodiStringProperty("shuffle", GlobalToggle.TOGGLE.toString()) else KodiBoolProperty("shuffle", state))))
         return makeCall(post)
     }
@@ -453,7 +453,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     private fun setSpeed(id: KodiID, playerID: PlayerID, speed: AbstractSpeed): PlayPauseSpeedRespond {
         logger.info("Set Speed $speed for $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.SET_SPEED, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.SET_SPEED, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (speed is SpeedLevel) KodiIntProperty("speed", speed.getValue().toInt()) else KodiStringProperty("speed", speed.getValue()))))
         return makeCall(post)
     }
@@ -498,7 +498,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     private fun setSubtitle(id: KodiID, playerID: PlayerID, subtitle: AbstractSubtitleSelection): KodiStringRespond {
         logger.info("Set Subtitle $subtitle for $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.SET_SUBTITLE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.SET_SUBTITLE, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (subtitle is SubtitleIndexSelection) KodiIntProperty("subtitle", subtitle.getValue().toInt()) else KodiStringProperty("subtitle", subtitle.getValue()))))
         return makeCall(post)
     }
@@ -543,7 +543,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
     @Throws(KodiException::class)
     private fun setVideoStream(id: KodiID, playerID: PlayerID, selection: AbstractStreamSelection): KodiStringRespond {
         logger.info("Select Video stream $selection for $playerID. ID: $id")
-        val post = KodiPostData(id, PlayerMethod.SET_VIDEO_STREAM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.SET_VIDEO_STREAM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (selection is StreamIndexSelection) KodiIntProperty("stream", selection.getValue().toInt()) else KodiStringProperty("stream", selection.getValue()))))
         return makeCall(post)
     }
@@ -590,7 +590,7 @@ class KodiPlayer @JvmOverloads constructor(ip: String, port: Int, useHTTPS: Bool
         logger.info("Zoom to $zoom for $playerID. ID: $id")
         if (!zoom.isValid())
             throw IllegalArgumentException("Zoom Level must be between 1 and 10.")
-        val post = KodiPostData(id, PlayerMethod.ZOOM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", id.id),
+        val post = KodiPostData(id, PlayerMethod.ZOOM, KodiPropertiesParam(listOf(KodiIntProperty("playerid", playerID.id),
                 if (zoom is ZoomLevel) KodiIntProperty("zoom", zoom.getValue().toInt()) else KodiStringProperty("zoom", zoom.getValue()))))
         return makeCall(post)
     }
