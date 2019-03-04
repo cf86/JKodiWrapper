@@ -9,4 +9,11 @@ enum class PlayerRepeat(var state: String) {
     override fun toString(): String {
         return state
     }
+
+    companion object {
+        @JvmStatic
+        fun generatePlayerRepeat(state: String): PlayerRepeat? {
+            return PlayerRepeat.values().find { it.state == state }
+        }
+    }
 }
