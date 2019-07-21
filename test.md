@@ -12,11 +12,12 @@ I am not sure, if the reference allele parameter was necessary. At least, I didn
 
 ## Steps
 
-1. Get all beacon IDs
-2. chunk the beacon ID list to chunks of size 3
-3. init completion service and submit an API call task per chunk
-4. wait until a task is done and process it by checking if it timed out, is found, not found or not applicable. Furthermore, note to which organization the beacon belongs to. For this, a map organization -> counter is used to keep track.
-5. create a tuple list from the organization map and afterward sort and reverse it 
+1. add BeaconClient Methods _getBeacons()_ and _queryBeacons(...)_
+2. Get all beacon IDs
+3. chunk the beacon ID list to chunks of size 3
+4. init completion service and submit an API call task per chunk
+5. wait until a task is done and process it by checking if it timed out, is found, not found or not applicable. Furthermore, note to which organization the beacon belongs to. For this, a map organization -> counter is used to keep track.
+6. create a tuple list from the organization map and afterward sort and reverse it 
 
 ## Design Decisions
 In this chapter, some design decisions will be explained.
