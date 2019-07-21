@@ -1,6 +1,6 @@
 
 # DNAstack Interview Exercise - Solution
-Christian Feier <Christian.Feier@gmail.com>
+Christian Feier (Christian.Feier@gmail.com)
 
 In this solution I give a short overview of my thinking, why some decisions were made and a short performance analysis.
 
