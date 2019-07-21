@@ -10,6 +10,8 @@ When working with genome scale data the term **reference allele** refers to the 
 
 I am not sure, if the reference allele parameter was necessary. At least, I didn't use it. If it was necessary, then I would have needed more information about beacons and so on. But since this was just an exercice, I guess the reference allele wasn't necessary.
 
+Furthermore, for Logging purposes a BeaconConfig was added, and logging was enabled in application.yml. It is still activated.
+
 ## Steps
 
 1. add BeaconClient Methods _getBeacons()_ and _queryBeacons(...)_
@@ -30,7 +32,7 @@ I just prefered the for loop because the performance is similiar to the other al
 The parallelization process would have been done using the executor only. In this case all tasks would have been submitted and List of Futures would have been returned. So far, all good. But without the completion service the developer needs to take care if a Future is done or not. A common way is to use a while loop and until _isDone()_ returns true. The completion service' _take()_ method offers the same functionality but in a more readable and elegant way.
 
 ### Feign Timeout configuration vs executor timeout
-Since Feign Client was already pre configured, it was easier to just add a read timeout to the Feign Client configuration instead of using the timeout function of the executor. Let's consider the following cases:
+Since Feign Client was already pre configured, it was easier to just add a read timeout to the Feign Client configuration in application.yml, instead of using the timeout function of the executor. Let's consider the following cases:
 1. API call is successful within 30 seconds -> all good, result is returned
 2. API call fails with 404, 500 or similar one -> all good, error is thrown, and task takes care about it.
 3. API call takes longer than 30 seconds -> Feign Configuration throws a timeout exception and call is interrupted. Task takes care about the error handling.
