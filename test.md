@@ -1,5 +1,7 @@
 
 # DNAstack Interview Exercise - Solution
+Christian Feier <Christian.Feier@gmail.com>
+
 In this solution I give a short overview of my thinking, why some decisions were made and a short performance analysis.
 
 First I should mention, I checked the Beacon API, but didn't anything about a reference allele. I am no biologist, and had to google the defintion:
